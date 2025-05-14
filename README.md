@@ -2,9 +2,7 @@
 
 This take-home exercise involves building a backend service for a Parking Garage Reservation & Payment API. Candidates may use either Ruby (Rails) or Python (Django), and should set up any necessary scaffolding based on this prompt. The solution must be implemented in the provided repository, including API endpoints, data models, and business logic as described below.
 
----
-
-### Features
+## Features
 
 1. **Garages & Map**
    - Store 5 garages
@@ -38,9 +36,8 @@ This take-home exercise involves building a backend service for a Parking Garage
 5. **User Reservations**
    - Allow a customer to list their upcoming and past reservations.
 
----
 
-### Deliverables
+## Deliverables
 
 - **database schema** or migrations to establish necessary entities/relationships.
 - **API endpoints** for the above use cases, backed by appropriate business logic.
