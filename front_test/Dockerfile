@@ -17,6 +17,3 @@ COPY --from=build /front_app/dist /usr/share/nginx/html
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
-
-
-curl -X 'GET' 'http://back-test:8000/api/parking/garage/' -H 'accept: application/json'
