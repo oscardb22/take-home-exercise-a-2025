@@ -44,3 +44,8 @@ This take-home exercise involves building a backend service for a Parking Garage
 - Automated tests.
 - A few **curl** or **HTTPie** examples demonstrating each endpoint.
 - A **README** explaining your setup and design choices, and with instructions on the steps to run the project.
+
+
+http://localhost:8000/api/schema/redoc/
+
+http://localhost:8000/api/schema/swagger-ui/
