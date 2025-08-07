@@ -28,7 +28,28 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "localhost:5173", "127.0.0.1:5173", ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "https://firefly-accepted-informally.ngrok-free.app",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://back_test:5173",
+    "http://back_test",
+    "http://front_test:5173",
+    "http://front_test",
+]
+CORS_ORIGIN_WHITELIST = (
+    "localhost:8000",
+    "firefly-accepted-informally.ngrok-free.app",
+    "localhost:5173",
+    "127.0.0.1:5173",
+    "back_test:5173",
+    "back_test",
+    "front_test:5173",
+    "front_test",
+)
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "https://firefly-accepted-informally.ngrok-free.app"]
 
 
 # Application definition
@@ -72,6 +93,7 @@ INSTALLED_APPS += INSTALLED_APPS_THIRD_PARTY + INSTALLED_APPS_PROJECT
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

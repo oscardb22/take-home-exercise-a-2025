@@ -1,0 +1,37 @@
+venv
+.venv
+.idea
+.git
+
+__pycache__
+# test files
+**/tests/**
+**/tests.py
+
+
+# the following folders are not needed during run time
+**/migrations/**
+**/commands/**
+**/fixtures/**
+**/data/**
+
+# other folders
+documentation/
+dockerfiles/
+http/
+scripts/
+
+# CI/DEV files
+ruff.toml
+bitbucket-pipelines.yml
+stop_pipeline.py
+Makefile
+docker-compose.yml
+.dockerignore
+.gitignore
+.editorconfig
+.pre-commit-config.yaml
+behave.ini
+sonar-project.properties
+Dockerfile
+DockerfilePostgresSql

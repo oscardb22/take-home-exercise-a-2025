@@ -22,7 +22,6 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 from applications.authentication.urls import api_urls as api_urls_authentication
-
 from applications.parking.urls import api_urls as api_urls_parking
 
 urls_api = [

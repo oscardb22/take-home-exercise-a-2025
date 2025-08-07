@@ -1,0 +1,30 @@
+services:
+  back_test:
+    build:
+      context: .
+      dockerfile: back_test/Dockerfile
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DEBUG=1
+    restart: "unless-stopped"
+    ports:
+      - "8000:8000"
+    networks:
+      - internal_network
+      - global_network
+  front_test:
+    build:
+      context: .
+      dockerfile: front_test/Dockerfile
+    depends_on:
+      - back_test
+    ports:
+      - "80:80"
+    networks:
+      - internal_network
+      - global_network
+networks:
+  internal_network:
+    driver: bridge
+  global_network:
+    driver: bridge
