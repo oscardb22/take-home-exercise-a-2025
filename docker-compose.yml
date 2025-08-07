@@ -1,5 +1,5 @@
 services:
-  back_test:
+  back-test:
     build:
       context: .
       dockerfile: back_test/Dockerfile
@@ -12,12 +12,12 @@ services:
     networks:
       - internal_network
       - global_network
-  front_test:
+  front-test:
     build:
       context: .
       dockerfile: front_test/Dockerfile
     depends_on:
-      - back_test
+      - back-test
     ports:
       - "80:80"
     networks:

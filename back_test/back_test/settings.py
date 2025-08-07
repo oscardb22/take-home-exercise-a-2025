@@ -28,7 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ["*", "localhost:5173", "127.0.0.1:5173", ]
+ALLOWED_HOSTS = ["*", "localhost:5173", "127.0.0.1:5173", "back_test", "back-test"]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "https://firefly-accepted-informally.ngrok-free.app",
@@ -49,7 +49,12 @@ CORS_ORIGIN_WHITELIST = (
     "front_test:5173",
     "front_test",
 )
-CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "https://firefly-accepted-informally.ngrok-free.app"]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "https://firefly-accepted-informally.ngrok-free.app",
+    "http://back_test:8000",
+    "http://back-test:8000"
+]
 
 
 # Application definition
@@ -166,9 +171,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # AUTHENTICATION
 AUTH_USER_MODEL = "authentication.User"

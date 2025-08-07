@@ -35,3 +35,4 @@ behave.ini
 sonar-project.properties
 Dockerfile
 DockerfilePostgresSql
+db.*
