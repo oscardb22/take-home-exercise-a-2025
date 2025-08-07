@@ -21,7 +21,7 @@ const Table = (props) => {
     }
   return (
     <>
-    <Modal onClose={closeModal} dataTo={data} isStyle={isModalOpen} urlToModal={props.urlToModal}/>
+    <Modal onClose={closeModal} dataTo={data} isStyle={isModalOpen} urlToModal={props.urlToModal} deleteField={props.deleteField}/>
     <div className='container'>
         <div className='p-5 text-center bg-light-dark rounded table-responsive'>
             <table className="table table-hover table-dark">

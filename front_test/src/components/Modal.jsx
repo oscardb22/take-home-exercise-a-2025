@@ -17,7 +17,8 @@ const Modal = (props) => {
             day: "",
             start_time: "",
             end_time: "",
-            plate: ""
+            plate: "",
+            uuid: ""
         })
     const handleChange = (e) => {
         setFormData({
@@ -25,6 +26,7 @@ const Modal = (props) => {
             day: props.dataTo.day,
             start_time: props.dataTo.start_time,
             end_time: props.dataTo.end_time,
+            uuid: props.dataTo.uuid,
             [e.target.name]: e.target.value,
         })
     }
@@ -48,7 +50,22 @@ const Modal = (props) => {
   }
 
   const submitInfo = async () => {
-    console.log(formData)
+    console.log(formData[props.deleteField], props.deleteField)
+    if (props.deleteField){
+      await LocalAxios.delete(`${props.urlToModal}${formData[props.deleteField]}/`, formData).then((response)=>{
+        setErrorData({})
+        setResponseData(response)
+        props.onClose() 
+        setTime(10 * 60)
+        navigate("/historical/"+props.dataTo.plate)
+    }).catch((error) =>{
+        setResponseData({})
+        setErrorData(error.response.data)
+        console.log(error)
+    }).finally(()=>{
+        setLoadingData(false)
+    })
+    }else{
     await LocalAxios.post(props.urlToModal, formData).then((response)=>{
         setErrorData({})
         setResponseData(response)
@@ -63,10 +80,10 @@ const Modal = (props) => {
         setLoadingData(false)
     })
   }
+  }
   return (
     <div className={"modal-overlay "+props.isStyle} onClick={props.onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <form onSubmit={submitInfo}>
         <h2>Spots Reservation</h2>
         <p>Time Remaining: {formatTime(time)}</p>
         <p>
@@ -82,8 +99,7 @@ const Modal = (props) => {
             <input className='form-control' value={formData.plate} onChange={handleChange} type="text" name='plate' placeholder="Enter your late's car" required/>
             <small>{errorData.plate && <div className='text-danger'>{errorData.plate}</div>}</small>
         </div>
-        <button type="submit">Booking</button>
-        </form>
+        <button onClick={submitInfo}>Booking</button>
       </div>
     </div>
   );

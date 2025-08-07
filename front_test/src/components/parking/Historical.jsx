@@ -22,7 +22,7 @@ const Historical = () => {
   return (
     <>
     <h2>Historical</h2>
-      <Table tableDataFor={tableData} hasAction={false} canDelete={false} canEdit={true} />
+      <Table tableDataFor={tableData} hasAction={false} canDelete={false} canEdit={false} showModal={true} urlToModal="parking/payment/" deleteField="uuid"/>
     </>
   )
 }

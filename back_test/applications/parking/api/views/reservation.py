@@ -142,6 +142,6 @@ class ReservationViewSet(mixins.DestroyModelMixin, GenericViewSet):
     )
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
-        transactional_id = instance.make_payment(request.data.get("amount", 10), None)
+        transactional_id = instance.make_payment(request.data.get("plate", 10), None)
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT, data={"transactional_id": transactional_id})
