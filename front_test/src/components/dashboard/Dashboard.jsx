@@ -29,7 +29,7 @@ const Dashboard = () => {
   return (
     <>
     <h2>Garages</h2>
-      <Table tableDataFor={tableData} hasAction={true} canDelete={false} canEdit={true} />
+      <Table tableDataFor={tableData} hasAction={true} canDelete={false} canEdit={true} urlTo="free_spots"/>
     </>
   )
 }

@@ -3,29 +3,28 @@ import {useParams} from "react-router-dom"
 import LocalAxios from "../../api/axios"
 import Table from "../Table"
 
-const ParkingFreeSpots = () => {
+const Historical = () => {
     const [tableData, setTableData] = useState([])
-    const {garage_id} = useParams()
-    
+    const {plate} = useParams()
 
     useEffect(() => {
         const fetchProtectedData = async () => {
             try{
-                const response = await LocalAxios.get(`parking/free_spots/?garage_id=${garage_id}`)
-                setTableData(response.data.results)
+                const response = await LocalAxios.get(`parking/historical/?plate=${plate || "NQZ777"}`)
+                setTableData(response.data)
             }catch(error){
                 console.error(error)
             }
         }
         fetchProtectedData()
         return () => {}
-      }, [])
+      }, [plate, ])
   return (
     <>
-    <h2>Free Spots</h2>
-      <Table tableDataFor={tableData} hasAction={false} canDelete={false} canEdit={false} showModal={true} urlToModal="parking/free_spots/"/>
+    <h2>Historical</h2>
+      <Table tableDataFor={tableData} hasAction={false} canDelete={false} canEdit={true} />
     </>
   )
 }
 
-export default ParkingFreeSpots
+export default Historical

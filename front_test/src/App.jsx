@@ -6,6 +6,7 @@ import AuthProvider from './AuthProvider'
 import { BrowserRouter,Routes, Route } from 'react-router-dom'
 import Dashboard from './components/dashboard/Dashboard'
 import ParkingFreeSpots from './components/parking/ParkingFreeSpots'
+import Historical from './components/parking/Historical'
 import PrivateRouter from './PrivateRouter'
 import PublicRouter from "./PublicRouter"
 import './assets/css/App.css'
@@ -27,7 +28,7 @@ return (
 
 
               <Route path='/free_spots/:garage_id' element={<PrivateRouter><ParkingFreeSpots /></PrivateRouter>}/>
-              <Route path='/historical' element={<PrivateRouter><Dashboard /></PrivateRouter>}/>
+              <Route path='/historical/:plate' element={<PrivateRouter><Historical /></PrivateRouter>}/>
               <Route path='*' element={<PublicRouter><Login /></PublicRouter>}/>
             </Routes>
           <Footer/>
